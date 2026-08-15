@@ -1,0 +1,13 @@
+{
+    "actorSpecification": 1,
+    "name": "sec-13f-institutional-holdings-tracker",
+    "title": "SEC 13F Institutional Holdings Tracker",
+    "description": "Track new SEC Form 13F-HR filings, the quarterly disclosure large institutional investment managers must file listing their U.S. equity holdings. Search by manager name or a company they might hold.",
+    "version": "0.1",
+    "meta": {
+        "templateId": "custom-no-proxy"
+    },
+    "input": "./input_schema.json",
+    "output": "./output_schema.json",
+    "dockerfile": "../Dockerfile"
+}

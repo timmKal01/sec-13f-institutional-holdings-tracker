@@ -1,0 +1,31 @@
+{
+    "title": "SEC 13F Institutional Holdings Tracker Input",
+    "type": "object",
+    "schemaVersion": 1,
+    "properties": {
+        "keyword": {
+            "title": "Keyword",
+            "type": "string",
+            "editor": "textfield",
+            "description": "Free-text search across the filing, which matches both the filing manager's name (e.g. \"Berkshire Hathaway\") and any company named in their reported holdings (e.g. searching \"Apple\" surfaces managers who hold Apple stock). Leave blank for all new 13F filings market-wide."
+        },
+        "daysBack": {
+            "title": "Days back",
+            "type": "integer",
+            "editor": "number",
+            "description": "How many days back from today to search, by filing date. 13F filings are quarterly and cluster around the 45-day-after-quarter-end deadline, so a wider window catches more filers.",
+            "default": 45,
+            "minimum": 1,
+            "maximum": 120
+        },
+        "maxResults": {
+            "title": "Max results",
+            "type": "integer",
+            "editor": "number",
+            "description": "Maximum number of filings to return, most recently filed first.",
+            "default": 50,
+            "minimum": 1,
+            "maximum": 100
+        }
+    }
+}

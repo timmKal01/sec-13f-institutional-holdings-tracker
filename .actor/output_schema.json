@@ -1,0 +1,11 @@
+{
+    "actorOutputSchemaVersion": 1,
+    "title": "Output schema of SEC 13F Institutional Holdings Tracker",
+    "properties": {
+        "results": {
+            "type": "string",
+            "title": "Filings",
+            "template": "{{links.apiDefaultDatasetUrl}}/items"
+        }
+    }
+}
