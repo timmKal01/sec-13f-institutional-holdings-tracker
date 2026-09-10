@@ -1,10 +1,33 @@
 const UA = 'Sec13fInstitutionalHoldingsTracker/0.1 (+contact: sec-13f-tracker-admin@example.com)';
 const FTS_BASE = 'https://efts.sec.gov/LATEST/search-index';
 
+const TRANSIENT_STATUSES = new Set([429, 500, 502, 503, 504]);
+const MAX_ATTEMPTS = 4;
+
+function sleep(ms) {
+    return new Promise((resolve) => setTimeout(resolve, ms));
+}
+
+/** Retries transient failures (rate limits, upstream 5xx) instead of failing the whole run on one hiccup. */
 async function secFetch(url) {
-    const res = await fetch(url, { headers: { 'User-Agent': UA } });
-    if (!res.ok) throw new Error(`SEC request failed: ${url} (${res.status})`);
-    return res;
+    let lastError;
+    for (let attempt = 1; attempt <= MAX_ATTEMPTS; attempt++) {
+        let res;
+        try {
+            res = await fetch(url, { headers: { 'User-Agent': UA } });
+        } catch (err) {
+            lastError = err;
+            if (attempt < MAX_ATTEMPTS) await sleep(1000 * 2 ** (attempt - 1));
+            continue;
+        }
+        if (res.ok) return res;
+        if (!TRANSIENT_STATUSES.has(res.status)) {
+            throw new Error(`SEC request failed: ${url} (${res.status})`);
+        }
+        lastError = new Error(`SEC request failed: ${url} (${res.status})`);
+        if (attempt < MAX_ATTEMPTS) await sleep(1000 * 2 ** (attempt - 1));
+    }
+    throw lastError;
 }
 
 /** Parses an EDGAR display name like "BERKSHIRE HATHAWAY INC  (BRK-A, BRK-B)  (CIK 0001067983)". */
