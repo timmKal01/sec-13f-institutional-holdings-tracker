@@ -1,0 +1,53 @@
+{
+    "actorSpecification": 1,
+    "fields": {},
+    "views": {
+        "overview": {
+            "title": "Overview",
+            "transformation": {
+                "fields": [
+                    "accessionNumber",
+                    "filerName",
+                    "filerCik",
+                    "filerTickers",
+                    "filingDate",
+                    "periodOfReport",
+                    "filingUrl"
+                ]
+            },
+            "display": {
+                "component": "table",
+                "properties": {
+                    "accessionNumber": {
+                        "label": "Accession number",
+                        "format": "text"
+                    },
+                    "filerName": {
+                        "label": "Filer name",
+                        "format": "text"
+                    },
+                    "filerCik": {
+                        "label": "Filer CIK",
+                        "format": "text"
+                    },
+                    "filerTickers": {
+                        "label": "Filer tickers",
+                        "format": "text"
+                    },
+                    "filingDate": {
+                        "label": "Filing date",
+                        "format": "text"
+                    },
+                    "periodOfReport": {
+                        "label": "Period of report",
+                        "format": "text"
+                    },
+                    "filingUrl": {
+                        "label": "Filing URL",
+                        "format": "link"
+                    }
+                }
+            }
+        }
+    }
+}
