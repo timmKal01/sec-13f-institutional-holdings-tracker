@@ -62,5 +62,5 @@ search returns 0 filings or 100.
 
 ## Related products
 
-- [SEC 13D/13G Ownership Tracker](https://github.com/timmKal01/sec-13d-ownership-tracker) — 5%+ activist/passive stakes in a single company, rather than a manager's full portfolio
-- [Insider Trading Alert](https://github.com/timmKal01/insider-trading-alert) — the officer/director equivalent (SEC Form 4)
+- [SEC 13D/13G Tracker](https://apify.com/m_ctim/sec-13d-ownership-tracker): 5%+ activist/passive stakes in a single company, rather than a manager's full portfolio
+- [Insider Trading Tracker](https://apify.com/m_ctim/insider-trading-alert): the officer/director equivalent (SEC Form 4)
